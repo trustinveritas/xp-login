@@ -1,15 +1,19 @@
 export async function onRequestPost(context) {
-    const formData = await context.request.formData();
-    const username = formData.get("username");
-    const password = formData.get("password");
+    const { request, env } = context;
+    const credentials = await request.json();
+    
+    const validUsername = env.LOGIN_USER;  // Username aus Umgebungsvariablen
+    const validPassword = env.LOGIN_PASS;  // Passwort aus Umgebungsvariablen
 
-    // Sichere Environment Variables aus Cloudflare
-    const CORRECT_USERNAME = context.env.LOGIN_USER;
-    const CORRECT_PASSWORD = context.env.LOGIN_PASS;
-
-    if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
-        return new Response(JSON.stringify({ success: true }), { status: 200 });
+    if (credentials.username === validUsername && credentials.password === validPassword) {
+        // Erfolgreiche Authentifizierung: Setze ein sicheres Cookie
+        return new Response("OK", {
+            status: 200,
+            headers: {
+                "Set-Cookie": "auth=true; Path=/; HttpOnly; Secure; SameSite=Strict"
+            }
+        });
     } else {
-        return new Response(JSON.stringify({ success: false }), { status: 401 });
+        return new Response("Access Denied", { status: 401 });
     }
 }
