@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.ok) {
             // Erfolgreicher Login → Weiterleitung zur geschützten Seite
-            window.location.href = "https://xp-windows.salucci.ch";
+            window.location.href = "https://windows-xp.salucci.ch";
         } else {
             alert("Access Denied! Falsche Zugangsdaten.");
         }
