@@ -6,11 +6,12 @@ export async function onRequestPost(context) {
     const validPassword = env.LOGIN_PASS;  // Passwort aus Umgebungsvariablen
 
     if (credentials.username === validUsername && credentials.password === validPassword) {
-        // Erfolgreiche Authentifizierung: Setze ein sicheres Cookie
+        // Erfolgreiche Authentifizierung: Setze ein sicheres Cookie mit Max-Age 1800 Sekunden (30 Min.)
         return new Response("OK", {
             status: 200,
             headers: {
-                "Set-Cookie": "auth=true; Path=/; HttpOnly; Secure; SameSite=Strict"
+                "Set-Cookie": "auth=true; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=1800",
+                "Content-Type": "text/plain"
             }
         });
     } else {
