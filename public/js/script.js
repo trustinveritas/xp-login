@@ -83,9 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("✅ Eingegebene Daten:", { username, password });
 
-        // ✅ Fetch-Request absenden
-        console.log("⏳ Sende Fetch-Anfrage an /login...");
-        const response = await fetch("/login", {
+        // ✅ Fetch-Request an die richtige Login-URL schicken
+        console.log("⏳ Sende Fetch-Anfrage an https://login.salucci.ch/login...");
+        const response = await fetch("https://login.salucci.ch/login", {  // 🔥 WICHTIG: Absolute URL
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
@@ -99,8 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             console.log("📜 Erhaltenes Token:", data.token);
 
-            // ✅ Weiterleitung
-            window.location.href = "https://windows-xp.salucci.ch"; 
+            // ✅ Weiterleitung zur geschützten Seite
+            window.location.href = "https://windows-xp.salucci.ch";
         } else {
             console.log("❌ Login fehlgeschlagen!");
             alert("❌ Access Denied! Falsche Zugangsdaten.");
