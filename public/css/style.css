@@ -1,47 +1,37 @@
-/* Hintergrund */
 html {
-  font-family: "MS Sans Serif", sans-serif;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif; /* Windows XP typische Schriftart */
   background-color: #004E98;
-  height: 100%;
-  margin: 0;
+  width: 1920px;
 }
 
-/* Login-Fenster zentrieren */
 #window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-  width: 460px;
   border: 2px solid blue;
-  background-color: #ECE9D8;
-  box-shadow: 0 0 15px #9E9E9E;
-  
-  padding: 20px;
+  width: 450px;
+  box-shadow: 0 0 10px #9E9E9E;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
 }
 
-/* Obere blaue Leiste */
 #topBar {
   background: linear-gradient(#2B90FF, #0055EA, #026AFE);
-  color: white;
-  font-weight: bold;
-  padding: 6px;
-  text-align: center;
-  font-size: 1.1em;
+  color:white;
+  font-weight:bold;
+  margin-top:-16px;
+  padding-top:.001px;
+  padding-bottom:.008px;
+  letter-spacing: .5px;
+  font-size:1em;
 }
 
-/* XP-Logo Bereich */
 #logoArea {
   background: linear-gradient(to right, #6286E1, #6286E1, #9FBBF6, #7899E9);
-  padding: 15px;
-  text-align: center;
+  margin-top: -16px;
 }
 
-/* Microsoft Logo */
-#microsoftTop {
-  margin-bottom: -10px;
-  font-size: 0.7em;
+#section {
+  text-align: center;
+  color: white;
 }
 
 #windowSpan {
@@ -50,8 +40,14 @@ html {
   color: #EFF3FD;
 }
 
+#microsoftTop {
+  margin-top: -8px;
+  font-size: 0.7em;
+  margin-left: -60px;
+}
+
 #proBottom {
-  margin-top: -10px;
+  margin-top: -22px;
 }
 
 sup {
@@ -59,46 +55,61 @@ sup {
   font-size: 0.7em;
 }
 
-/* Copyright-Text */
 nav p {
-  font-size: 0.75em;
-  text-align: center;
+  margin-top: -15px;
+  font-size: 0.7em;
+  padding-bottom: 5px;
   color: white;
 }
 
-/* Orange Trennleiste */
+#rightSpan {
+  float: right;
+  padding-right: 8px;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  font-size: 1.1em;
+}
+
 #orangeBar {
   background: linear-gradient(to right, #6D8CE1, #6B81CA, #B48E7E, #E89148, #E89148, #B48E7E, #6B87D5);
   height: 9px;
-  margin-top: -5px;
+  margin-top: -11px;
 }
 
-/* Login-Formular */
 form {
   background-color: #ECE9D8;
-  font-size: 1em;
-  padding: 20px;
-  text-align: center;
+  margin-top: -16px;
+  font-size: 0.75em;
+  letter-spacing: 0.5px;
+  clear: left;
 }
 
-/* Eingabefelder */
+form p:first-child {
+  padding-top: 15px;
+}
+
+form p {
+  display: block;
+}
+
 form input {
-  width: 90%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #808080;
-  font-size: 1em;
+  width: 280px;
+  clear: left;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif; /* Windows XP Font */
 }
 
-/* Buttons */
 button {
-  width: 100px;
-  padding: 5px;
-  margin: 10px;
-  border: 2px solid #808080;
-  font-size: 1em;
-  background: #E0E0E0;
-  cursor: pointer;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  border-radius: 5%;
+  width: 95px;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif; /* Windows XP Font */
+}
+
+#firstButton {
+  margin-left: 120px;
 }
 
 button:hover {
@@ -109,7 +120,10 @@ button:active {
   border: 2px solid #F49130;
 }
 
-/* XP-Glas-Effekt */
+.specialAlign {
+  padding-left: 10px;
+}
+
 canvas {
   width: 65px;
   height: 110px;
