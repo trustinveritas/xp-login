@@ -64,9 +64,9 @@ function canvasApp() {
 
 // ✅ Login-Skript für Authentifizierung
 document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.querySelector("form");
-    const usernameInput = document.querySelector("input[type='text']");
-    const passwordInput = document.querySelector("input[type='password']");
+    const loginForm = document.getElementById("loginForm");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
 
     loginForm.addEventListener("submit", async function (event) {
         event.preventDefault(); // Verhindert das Standardverhalten des Formulars
@@ -76,20 +76,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // ✅ Login-Request an den Auth-Server senden
-            const response = await fetch("https://login.salucci.ch/login", {
+            const response = await fetch("/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
-                credentials: "include" // WICHTIG: Cookies von Cross-Origin zulassen
+                credentials: "include" // ❗️Wichtig für Cookies!
             });
 
             if (response.ok) {
+                console.log("✅ Login erfolgreich! Weiterleitung...");
                 window.location.href = "https://windows-xp.salucci.ch"; // 🔀 Weiterleitung zur geschützten Seite
             } else {
-                throw new Error("❌ Access Denied! Falsche Zugangsdaten.");
+                console.error("❌ Login fehlgeschlagen", response.status);
+                alert("❌ Access Denied! Falsche Zugangsdaten.");
             }
         } catch (error) {
-            alert(error.message);
+            console.error("❌ Fehler beim Login:", error);
+            alert("❌ Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
         }
     });
 });
