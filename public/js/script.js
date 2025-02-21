@@ -64,35 +64,38 @@ function canvasApp() {
 
 // ✅ Login-Skript für Authentifizierung
 document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
+    console.log("script.js erfolgreich geladen!");
+
+    const loginForm = document.querySelector("form");
+    const usernameInput = document.querySelector("input[type='text']");
+    const passwordInput = document.querySelector("input[type='password']");
 
     loginForm.addEventListener("submit", async function (event) {
         event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+        console.log("Login-Formular wurde abgeschickt!");
 
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
+        
+        console.log("Benutzername:", username);
+        console.log("Passwort:", password);
 
-        try {
-            // ✅ Login-Request an den Auth-Server senden
-            const response = await fetch("/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }),
-                credentials: "include" // ❗️Wichtig für Cookies!
-            });
+        // Fetch-Request absenden
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+            credentials: "include"
+        });
 
-            if (response.ok) {
-                console.log("✅ Login erfolgreich! Weiterleitung...");
-                window.location.href = "https://windows-xp.salucci.ch"; // 🔀 Weiterleitung zur geschützten Seite
-            } else {
-                console.error("❌ Login fehlgeschlagen", response.status);
-                alert("❌ Access Denied! Falsche Zugangsdaten.");
-            }
-        } catch (error) {
-            console.error("❌ Fehler beim Login:", error);
-            alert("❌ Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
+        console.log("Fetch wurde gesendet!");
+
+        if (response.ok) {
+            console.log("Login erfolgreich!");
+            window.location.href = "https://windows-xp.salucci.ch"; 
+        } else {
+            console.log("Login fehlgeschlagen!");
+            alert("❌ Access Denied! Falsche Zugangsdaten.");
         }
     });
 });
