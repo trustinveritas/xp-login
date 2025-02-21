@@ -20,15 +20,12 @@ function canvasApp() {
         context.quadraticCurveTo(30, 22, 6, 22.5);
         context.lineTo(12, 10);
         context.closePath();
-        context.lineWidth = 1;
         context.fillStyle = '#F75A14';
         context.fill();
-        context.strokeStyle = '#F75A14';
         context.stroke();
 
         context.beginPath(); // top right; green
         context.strokeStyle = "#96C93D";
-        context.lineWidth = 1;
         context.moveTo(40, 14);
         context.quadraticCurveTo(49, 18, 63, 17);
         context.lineTo(57, 32);
@@ -37,12 +34,10 @@ function canvasApp() {
         context.closePath();
         context.fillStyle = '#96C93D';
         context.fill();
-        context.strokeStyle = '#96C93D';
         context.stroke();
 
         context.beginPath(); // bottom right; yellow
         context.strokeStyle = "#FACC13";
-        context.lineWidth = 1;
         context.moveTo(33, 30);
         context.quadraticCurveTo(47, 37, 56, 35);
         context.lineTo(49, 50);
@@ -51,12 +46,10 @@ function canvasApp() {
         context.closePath();
         context.fillStyle = "#FACC13";
         context.fill();
-        context.strokeStyle = "#FACC13";
         context.stroke();
 
         context.beginPath(); // bottom left; blue
         context.strokeStyle = "#8BA4FD";
-        context.lineWidth = 1;
         context.moveTo(30, 29);
         context.quadraticCurveTo(30, 24, 5, 25);
         context.lineTo(0, 40);
@@ -65,12 +58,11 @@ function canvasApp() {
         context.closePath();
         context.fillStyle = "#8BA4FD";
         context.fill();
-        context.strokeStyle = "#8BA4FD";
         context.stroke();
     }
 }
 
-// ✅ Füge den Login-Code hinzu
+// ✅ Login-Skript für Authentifizierung
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector("form");
     const usernameInput = document.querySelector("input[type='text']");
@@ -79,21 +71,27 @@ document.addEventListener("DOMContentLoaded", function () {
     loginForm.addEventListener("submit", async function (event) {
         event.preventDefault(); // Verhindert das Standardverhalten des Formulars
 
-        const username = usernameInput.value;
-        const password = passwordInput.value;
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
 
-        // ✅ Login-Request an den Server senden
-        const response = await fetch("/login", {
+        // ✅ Login-Request an den Auth-Server senden
+        const response = await fetch("https://login.salucci.ch/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password }),
+            credentials: "include" // WICHTIG: Cookies von Cross-Origin zulassen
         });
 
         if (response.ok) {
-            // Erfolgreicher Login → Weiterleitung zur geschützten Seite
+            const { token } = await response.json();
+
+            // ✅ Speichere das Token sicher im HttpOnly-Cookie über den Server
+            document.cookie = `auth_token=${token}; Path=/; Secure; HttpOnly; SameSite=Strict`;
+
+            // 🔀 Weiterleitung zur geschützten Seite
             window.location.href = "https://windows-xp.salucci.ch";
         } else {
-            alert("Access Denied! Falsche Zugangsdaten.");
+            alert("❌ Access Denied! Falsche Zugangsdaten.");
         }
     });
 });
