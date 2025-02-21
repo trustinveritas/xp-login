@@ -1,144 +1,117 @@
-
+/* Hintergrund */
 html {
-font-family:"MS Sans Serif";
-background-color:#004E98;
-width:1920px;
+  font-family: "MS Sans Serif", sans-serif;
+  background-color: #004E98;
+  height: 100%;
+  margin: 0;
 }
 
+/* Login-Fenster zentrieren */
 #window {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   
-  width: 450px;
+  width: 460px;
   border: 2px solid blue;
-  -webkit-box-shadow: 0 0 15px #9E9E9E;
-  box-shadow: 0 0 10px #9E9E9E;
+  background-color: #ECE9D8;
+  box-shadow: 0 0 15px #9E9E9E;
   
-  background-color: white; /* Falls nötig */
-  padding: 20px; /* Optional */
+  padding: 20px;
 }
 
+/* Obere blaue Leiste */
 #topBar {
- background: linear-gradient(#2B90FF, #0055EA, #026AFE);
- color:white;
- font-weight:bold;
- margin-top:-16px;
- padding-top:.001px;
- padding-bottom:.008px;
- letter-spacing: .5px;
- font-size:1em;
+  background: linear-gradient(#2B90FF, #0055EA, #026AFE);
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  text-align: center;
+  font-size: 1.1em;
 }
 
+/* XP-Logo Bereich */
 #logoArea {
- background: linear-gradient(to right,#6286E1, #6286E1 , #9FBBF6, #7899E9); 
- margin-top:-16px;
- }
-
-
- 
-#section {
- text-align:center;
- color:white;
-}
- 
-#windowSpan {
-font-size:2em;
- margin-left: -10px;
- margin-right: -10px;
- margin-top -10px;
- margin-bottom: -10px;
- font-weight:bold;
- color:#EFF3FD;
+  background: linear-gradient(to right, #6286E1, #6286E1, #9FBBF6, #7899E9);
+  padding: 15px;
+  text-align: center;
 }
 
-
+/* Microsoft Logo */
 #microsoftTop {
-margin-top:-8px;
-margin-bottom:-27px;
-font-size:.7em;
-margin-left:-60px;
+  margin-bottom: -10px;
+  font-size: 0.7em;
+}
+
+#windowSpan {
+  font-size: 2em;
+  font-weight: bold;
+  color: #EFF3FD;
 }
 
 #proBottom {
-
-margin-top:-22px;
+  margin-top: -10px;
 }
+
 sup {
- color:#F75A14;
- font-size:0.7em;
+  color: #F75A14;
+  font-size: 0.7em;
 }
 
-nav p{
-margin-top:-15px;
-font-size:0.7em;
-padding-bottom:5px;
-color:white;
+/* Copyright-Text */
+nav p {
+  font-size: 0.75em;
+  text-align: center;
+  color: white;
 }
 
-#rightSpan {
-float:right;
-padding-right:8px;
-color:white;
-font-weight:bold;
-font-style:italic;
- letter-spacing: -.5px;
- font-size:1.1em;
-}
-
+/* Orange Trennleiste */
 #orangeBar {
- background: linear-gradient(to right, #6D8CE1, #6B81CA, #B48E7E, #E89148, #E89148, #B48E7E, #6B87D5); 
-height:9px;
-margin-top:-11px;
+  background: linear-gradient(to right, #6D8CE1, #6B81CA, #B48E7E, #E89148, #E89148, #B48E7E, #6B87D5);
+  height: 9px;
+  margin-top: -5px;
 }
 
+/* Login-Formular */
 form {
- background-color:#ECE9D8;
- margin-top:-16px;
- font-size:0.75em;
-  letter-spacing: .5px;
-  clear:left;
+  background-color: #ECE9D8;
+  font-size: 1em;
+  padding: 20px;
+  text-align: center;
 }
 
-form p:first-child {
- padding-top:15px;
-}
-
-form p{
-display:block;
-}
-
+/* Eingabefelder */
 form input {
-width:280px;
-clear:left;
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #808080;
+  font-size: 1em;
 }
 
+/* Buttons */
 button {
-margin-bottom:8px;
-margin-left:10px;
-border-radius:5%;
-width:95px;
-}
-
-#firstButton{
-margin-left:120px;
+  width: 100px;
+  padding: 5px;
+  margin: 10px;
+  border: 2px solid #808080;
+  font-size: 1em;
+  background: #E0E0E0;
+  cursor: pointer;
 }
 
 button:hover {
-border:2px solid #95AFED;
+  border: 2px solid #95AFED;
 }
 
 button:active {
-border:2px solid #F49130;
+  border: 2px solid #F49130;
 }
 
-.specialAlign {
-padding-left:10px;
-}
-
+/* XP-Glas-Effekt */
 canvas {
-width:65px;
-height:110px;
-transform: rotate(-5deg);}
+  width: 65px;
+  height: 110px;
+  transform: rotate(-5deg);
 }
