@@ -74,19 +74,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
 
-        // ✅ Login-Request an den Auth-Server senden
-        const response = await fetch("https://login.salucci.ch/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
-            credentials: "include" // WICHTIG: Cookies von Cross-Origin zulassen
-        });
+        try {
+            // ✅ Login-Request an den Auth-Server senden
+            const response = await fetch("https://login.salucci.ch/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password }),
+                credentials: "include" // WICHTIG: Cookies von Cross-Origin zulassen
+            });
 
-        if (response.ok) {
-            // ✅ Cookie wird automatisch vom Server gesetzt!
-            window.location.href = "https://windows-xp.salucci.ch"; // 🔀 Weiterleitung zur geschützten Seite
-        } else {
-            alert("❌ Access Denied! Falsche Zugangsdaten.");
+            if (response.ok) {
+                window.location.href = "https://windows-xp.salucci.ch"; // 🔀 Weiterleitung zur geschützten Seite
+            } else {
+                throw new Error("❌ Access Denied! Falsche Zugangsdaten.");
+            }
+        } catch (error) {
+            alert(error.message);
         }
     });
 });

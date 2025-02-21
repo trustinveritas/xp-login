@@ -6,7 +6,7 @@ export async function onRequestPost(context) {
     const validPassword = env.LOGIN_PASS;
 
     if (credentials.username === validUsername && credentials.password === validPassword) {
-        // 🔐 JWT-Token manuell generieren
+        // 🔐 JWT-Token generieren
         const token = await signJWT({ user: credentials.username }, env.JWT_SECRET, 1800);
 
         return new Response(JSON.stringify({ token }), {

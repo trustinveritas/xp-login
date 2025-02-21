@@ -1,55 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Windows XP Login Screen</title>
   <link rel="stylesheet" href="./css/style.css">
-
 </head>
 <body>
-<!-- partial:index.partial.html -->
+
 <div id="window">
+    <div id="topBar">
+        <p>Log On to Windows</p>
+    </div> 
 
-<div id="topBar">
-<p>Log On to Windows</p>
-</div> 
+    <div id="logoArea">
+        <div style="position: absolute; top: 35px; left: 855px;">
+            <canvas id="canvas" width="80" height="100">
+                This browser is not compatible with HTML5 canvas.
+            </canvas>
+        </div>
+        <div id="section"><br />
+            <p id="microsoftTop">Microsoft</p>
+            <p><span id="windowSpan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows<sup>xp</sup></span></p>
+            <p id="proBottom">Professional</p>
+        </div>
+        <nav>
+            <p>Copyright &#169; 1985-2001</p>
+            <p>Microsoft Corporation <span id="rightSpan">Microsoft</span></p>
+        </nav>
+    </div> <!-- end of logoArea -->
 
-<div id="logoArea">
-<div style="position: absolute; top: 35px; left: 855px;">
-<canvas id="canvas" width="80" height="100">
-This browser is not compatible with HTML5 canvas. 
-</canvas>
-</div>
-<div id="section"><br />
-<p id="microsoftTop">Microsoft</p>
-<p><span id="windowSpan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows<sup>xp</sup></span></p>
-<p id="proBottom">Professional</p>
-</div>
+    <div id="orangeBar"></div> <!-- end of orangeBar -->
 
-<nav>
-<p>Copyright &#169; 1985-2001</p>
-<p>Microsoft Corporation <span id="rightSpan">Microsoft</span></p>
-</nav>
-</div> <!-- end of logoArea -->
-
-<div id="orangeBar">
-</div> <!-- end of orangeBar -->
-
-<form>
-<p class="specialAlign">User name: <input type="text"></p>
-<p class="specialAlign">Password:  &nbsp; <input type="password"></p>
-<button id="firstButton">OK</button>
-<button>Cancel</button>
-<button>Options >></button>
-</form>
-
-
-
+    <!-- ✅ Login-Formular mit "id" -->
+    <form id="loginForm">
+        <p class="specialAlign">User name: <input type="text" name="username" id="username"></p>
+        <p class="specialAlign">Password:  &nbsp; <input type="password" name="password" id="password"></p>
+        <button type="submit" id="firstButton">OK</button>
+        <button type="button" onclick="resetForm()">Cancel</button>
+        <button type="button">Options >></button>
+    </form>
 
 </div> <!-- end of window -->
-</body>
-<!-- partial -->
-  <script  src="./js/script.js"></script>
+
+<script src="./js/script.js"></script>
+<script>
+    function resetForm() {
+        document.getElementById("loginForm").reset();
+    }
+</script>
 
 </body>
 </html>
