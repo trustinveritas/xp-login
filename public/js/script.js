@@ -64,23 +64,27 @@ function canvasApp() {
 
 // ✅ Login-Skript für Authentifizierung
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("script.js erfolgreich geladen!");
+    console.log("✅ script.js erfolgreich geladen!");
 
-    const loginForm = document.querySelector("loginForm");
-    const usernameInput = document.querySelector("input[type='text']");
-    const passwordInput = document.querySelector("input[type='password']");
+    const loginForm = document.getElementById("loginForm");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    console.log("✅ Form gefunden?", loginForm);
+    console.log("✅ Username-Feld gefunden?", usernameInput);
+    console.log("✅ Password-Feld gefunden?", passwordInput);
 
     loginForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Formulars
-        console.log("Login-Formular wurde abgeschickt!");
+        event.preventDefault(); // ⚠ Verhindert Neuladen der Seite
+        console.log("✅ Login-Formular abgeschickt!");
 
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
-        
-        console.log("Benutzername:", username);
-        console.log("Passwort:", password);
 
-        // Fetch-Request absenden
+        console.log("✅ Eingegebene Daten:", { username, password });
+
+        // ✅ Fetch-Request absenden
+        console.log("⏳ Sende Fetch-Anfrage an /login...");
         const response = await fetch("/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -88,13 +92,17 @@ document.addEventListener("DOMContentLoaded", function () {
             credentials: "include"
         });
 
-        console.log("Fetch wurde gesendet!");
+        console.log("✅ Fetch wurde gesendet!");
 
         if (response.ok) {
-            console.log("Login erfolgreich!");
+            console.log("✅ Login erfolgreich!");
+            const data = await response.json();
+            console.log("📜 Erhaltenes Token:", data.token);
+
+            // ✅ Weiterleitung
             window.location.href = "https://windows-xp.salucci.ch"; 
         } else {
-            console.log("Login fehlgeschlagen!");
+            console.log("❌ Login fehlgeschlagen!");
             alert("❌ Access Denied! Falsche Zugangsdaten.");
         }
     });
