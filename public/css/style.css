@@ -6,17 +6,18 @@ width:1920px;
 }
 
 #window {
-border:2px solid blue;
-width:450px;
--webkit-box-shadow: 0 0 15px #9E9E9E;
-        box-shadow: 0 0 10px #9E9E9E;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-   display: block;
-    margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 450px;
+  border: 2px solid blue;
+  -webkit-box-shadow: 0 0 15px #9E9E9E;
+  box-shadow: 0 0 10px #9E9E9E;
+  
+  background-color: white; /* Falls nötig */
+  padding: 20px; /* Optional */
 }
 
 #topBar {
