@@ -66,7 +66,7 @@ function canvasApp() {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("script.js erfolgreich geladen!");
 
-    const loginForm = document.querySelector("form");
+    const loginForm = document.querySelector("loginForm");
     const usernameInput = document.querySelector("input[type='text']");
     const passwordInput = document.querySelector("input[type='password']");
 
