@@ -9,11 +9,11 @@ export async function onRequestPost(context) {
         // 🔐 JWT-Token generieren
         const token = await signJWT({ user: credentials.username }, env.JWT_SECRET, 1800);
 
-        return new Response(JSON.stringify({ token }), {
+        return new Response(JSON.stringify({ success: true }), {
             status: 200,
             headers: {
                 "Content-Type": "application/json",
-                "Set-Cookie": `auth_token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=1800`
+                "Set-Cookie": `auth_token=${token}; Path=/; Domain=.salucci.ch; HttpOnly; Secure; SameSite=None; Max-Age=1800`
             }
         });
     } else {
