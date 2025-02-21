@@ -1,4 +1,4 @@
-window.addEventListener('load', eventWindowLoaded, false);
+window.addEventListener("load", eventWindowLoaded, false);
 
 function eventWindowLoaded() {
     canvasApp();
@@ -20,7 +20,7 @@ function canvasApp() {
         context.quadraticCurveTo(30, 22, 6, 22.5);
         context.lineTo(12, 10);
         context.closePath();
-        context.fillStyle = '#F75A14';
+        context.fillStyle = "#F75A14";
         context.fill();
         context.stroke();
 
@@ -32,7 +32,7 @@ function canvasApp() {
         context.quadraticCurveTo(49, 35, 34, 28);
         context.lineTo(40, 14);
         context.closePath();
-        context.fillStyle = '#96C93D';
+        context.fillStyle = "#96C93D";
         context.fill();
         context.stroke();
 
@@ -83,13 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (response.ok) {
-            const { token } = await response.json();
-
-            // ✅ Speichere das Token sicher im HttpOnly-Cookie über den Server
-            document.cookie = `auth_token=${token}; Path=/; Secure; HttpOnly; SameSite=Strict`;
-
-            // 🔀 Weiterleitung zur geschützten Seite
-            window.location.href = "https://windows-xp.salucci.ch";
+            // ✅ Cookie wird automatisch vom Server gesetzt!
+            window.location.href = "https://windows-xp.salucci.ch"; // 🔀 Weiterleitung zur geschützten Seite
         } else {
             alert("❌ Access Denied! Falsche Zugangsdaten.");
         }

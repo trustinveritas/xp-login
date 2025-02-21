@@ -8,17 +8,21 @@ export async function onRequestPost(context) {
     const validPassword = env.LOGIN_PASS;
 
     if (credentials.username === validUsername && credentials.password === validPassword) {
-        // ✅ JWT-Token generieren
+        // ✅ JWT-Token generieren (30 Minuten gültig)
         const token = await jwt.sign({ user: credentials.username }, env.JWT_SECRET, { expiresIn: "30m" });
 
-        return new Response(JSON.stringify({ token }), {
+        return new Response(JSON.stringify({ success: true }), {
             status: 200,
             headers: {
                 "Content-Type": "application/json",
-                "Set-Cookie": `auth_token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=1800`
+                // ✅ Setzt das JWT-Cookie für die gesamte salucci.ch-Domain
+                "Set-Cookie": `auth_token=${token}; Path=/; Domain=.salucci.ch; HttpOnly; Secure; SameSite=None; Max-Age=1800`
             }
         });
     } else {
-        return new Response("Access Denied", { status: 401 });
+        return new Response(JSON.stringify({ success: false, message: "Access Denied" }), {
+            status: 401,
+            headers: { "Content-Type": "application/json" }
+        });
     }
 }
